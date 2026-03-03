@@ -345,7 +345,6 @@
       gap: 24px;
     }
 
-    /* --- Стили для TGK Контейнера с эффектом слияния с фоном --- */
     .tgk-box {
       display: flex;
       align-items: center;
@@ -357,7 +356,6 @@
       font-weight: 900;
       letter-spacing: 0.15em;
       position: relative;
-      /* Градиент прозрачный по краям и слегка заметный в центре */
       background: linear-gradient(90deg, rgba(8,0,12,0) 0%, rgba(255,30,86,0.15) 50%, rgba(8,0,12,0) 100%);
       transition: all 0.3s;
       overflow: hidden;
@@ -393,7 +391,6 @@
       box-shadow: 0 0 15px var(--neon-glitch);
       background: linear-gradient(90deg, transparent, #fff, transparent);
     }
-    /* ------------------------------------------------------------- */
 
     .link-box {
       display: flex;
@@ -480,47 +477,54 @@
     </div>
 
     <div class="portfolio-card">
-      <div class="portfolio-label">PORTFOLIO LINKS</div>
+      
       <div class="portfolio-links">
-        
-        <!-- TGK Ссылка, сливающаяся с фоном (Выше всех) -->
         <a class="tgk-box" href="https://t.me/goldensisi4" target="_blank" rel="noreferrer">
           <span>T.ME/GOLDENSISI4</span>
         </a>
 
-        <!-- GitHub Ссылка (Ниже TGK) -->
-        <a class="link-box" href="https://github.com/" target="_blank" rel="noreferrer">
+        <a class="link-box" href="https://github.com/bosstier1" target="_blank" rel="noreferrer">
           <span>GITHUB PROFILE</span>
         </a>
+      </div>
 
-        <!-- Ссылки на портфолио (В самом низу) -->
+      <div class="portfolio-label" style="margin-top: 40px;">PORTFOLIO LINKS</div>
+      
+      <div class="portfolio-links">
         <a class="link-box" href="https://wiki.ss14.su/" target="_blank" rel="noreferrer">
           <span>https://wiki.ss14.su/</span>
         </a>
         <a class="link-box" href="https://wiki.station14.space/" target="_blank" rel="noreferrer">
           <span>https://wiki.station14.space/</span>
         </a>
-        
       </div>
+
     </div>
   </div>
 
   <script>
     const matrixContainer = document.getElementById('matrixRain');
-    const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+-=[]{}|;:,.<>?/\\\\\\\\\\\\\\\\~`ｦÆｳｲｦΔΘΛΞΠΣΦΨΩαβγδεζηθικλμνξοπρστυφχψω";
+    const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+-=[]{}|;:,.<>?/~`ｦÆｳｲｦΔΘΛΞΠΣΦΨΩαβγδεζηθικλμνξοπρστυφχψω";
+    
     for (let i = 0; i < 40; i++) {
       const col = document.createElement('div');
       col.className = 'matrix-col';
       col.style.animationDuration = (Math.random() * 10 + 5) + 's';
       col.style.animationDelay = '-' + (Math.random() * 10) + 's';
       col.style.opacity = Math.random() * 0.5 + 0.3;
+      
       let str = "";
-      for(let j = 0; j < 80; j++) str += charset.charAt(Math.floor(Math.random() * charset.length)) + "\\\\\\\\n";
+      for(let j = 0; j < 80; j++) {
+        str += charset.charAt(Math.floor(Math.random() * charset.length)) + "\n";
+      }
       col.innerText = str;
       matrixContainer.appendChild(col);
+      
       setInterval(() => {
         let newStr = "";
-        for(let j = 0; j < 80; j++) newStr += charset.charAt(Math.floor(Math.random() * charset.length)) + "\\\\\\\\n";
+        for(let j = 0; j < 80; j++) {
+          newStr += charset.charAt(Math.floor(Math.random() * charset.length)) + "\n";
+        }
         col.innerText = newStr;
       }, Math.random() * 2000 + 1000);
     }
@@ -532,7 +536,6 @@
       cursorWrapper.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
     });
 
-    // Обратите внимание, что querySelectorAll захватывает все "a", поэтому кастомный курсор сработает и на новых кнопках
     const interactables = document.querySelectorAll('a, button, .profile-card');
     interactables.forEach(el => {
       el.addEventListener('mouseenter', () => {
