@@ -225,6 +225,23 @@
       overflow: hidden;
     }
 
+    .bot-avatar-wrap {
+      width: 80px;
+      height: 80px;
+      border: 2px solid var(--neon-red-soft);
+      box-shadow: 0 0 16px rgba(255, 30, 86, 0.6);
+      overflow: hidden;
+      margin-bottom: 8px;
+      background: #050008;
+    }
+
+    .bot-avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     .bot-title {
       font-size: 14px;
       letter-spacing: 0.25em;
@@ -254,15 +271,9 @@
       height: 10px;
       border-radius: 50%;
       border: 1px solid #000;
-      background: #747f8d;
-      box-shadow: 0 0 8px #747f8d;
-      transition: background 0.3s, box-shadow 0.3s;
+      background: #43b581;
+      box-shadow: 0 0 10px #43b581;
     }
-
-    .bot-status-dot.online { background: #43b581; box-shadow: 0 0 10px #43b581; }
-    .bot-status-dot.idle { background: #faa61a; box-shadow: 0 0 10px #faa61a; }
-    .bot-status-dot.dnd { background: #f04747; box-shadow: 0 0 10px #f04747; }
-    .bot-status-dot.offline { background: #747f8d; box-shadow: 0 0 8px #747f8d; }
 
     .bot-description {
       font-size: 11px;
@@ -349,43 +360,34 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: contrast(160%) saturate(140%) grayscale(10%);
-      image-rendering: pixelated;
+      image-rendering: auto;
     }
 
     .avatar-wrap::before, .avatar-wrap::after {
       content: ""; position: absolute; inset: 0;
-      background: url("https://cdn-live.warthunder.com/uploads/c2/fc/1d/89c1994b2285c0fb13540b86af1d038c7d/asa.png") center/cover;
-      image-rendering: pixelated; mix-blend-mode: screen; pointer-events: none; z-index: 2;
-    }
-    .avatar-wrap::before {
-      left: -3px; filter: drop-shadow(5px 0 0 rgba(255, 0, 60, 0.9));
-      animation: rgbGlitch 0.15s infinite linear alternate-reverse;
-    }
-    .avatar-wrap::after {
-      left: 3px; filter: drop-shadow(-5px 0 0 rgba(0, 255, 255, 0.9));
-      animation: rgbGlitch 0.25s infinite linear alternate;
-    }
-    @keyframes rgbGlitch {
-      0% { transform: translate(0,0); clip-path: inset(10% 0 80% 0); }
-      20% { transform: translate(-2px, 1px); clip-path: inset(40% 0 10% 0); }
-      40% { transform: translate(2px, -1px); clip-path: inset(80% 0 5% 0); }
-      60% { transform: translate(0, 2px); clip-path: inset(20% 0 50% 0); }
-      80% { transform: translate(-1px, -2px); clip-path: inset(50% 0 30% 0); }
-      100% { transform: translate(1px, 1px); clip-path: inset(5% 0 90% 0); }
+      pointer-events: none; z-index: 2;
+      background: none;
     }
 
     .avatar-glitch-layer {
       position: absolute; inset: 0;
-      background: url("https://cdn-live.warthunder.com/uploads/c2/fc/1d/89c1994b2285c0fb13540b86af1d038c7d/asa.png") center/cover;
-      mix-blend-mode: color-burn; filter: hue-rotate(90deg) contrast(200%);
-      animation: avatarTear 2s infinite; image-rendering: pixelated; z-index: 3;
+      mix-blend-mode: normal;
+      animation: none;
+      image-rendering: auto;
+      z-index: 3;
+      background: none;
     }
+
     .avatar-scanline {
       position: absolute; top: 0; left: 0; right: 0; height: 4px;
-      background: rgba(255, 255, 255, 0.8); box-shadow: 0 0 10px #fff, 0 0 20px var(--neon-glitch);
-      mix-blend-mode: overlay; animation: scanline 2.5s linear infinite; z-index: 4; pointer-events: none;
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 10px #fff, 0 0 20px var(--neon-glitch);
+      mix-blend-mode: overlay;
+      animation: scanline 2.5s linear infinite;
+      z-index: 4;
+      pointer-events: none;
     }
+
     @keyframes scanline { 0% { top: -10%; } 100% { top: 110%; } }
 
     .profile-info {
@@ -410,7 +412,6 @@
       text-transform: uppercase;
       color: #fff;
       text-shadow: 3px 3px 0 var(--neon-glitch), -3px -1px 0 #0ff;
-      animation: textJitter 4s infinite;
     }
 
     .status-container {
@@ -598,18 +599,23 @@
 
       <div class="bot-block">
         <div class="bot-pill">ACTIVE</div>
+
+        <div class="bot-avatar-wrap">
+          <img class="bot-avatar-img" src="https://i.pinimg.com/736x/06/fd/95/06fd95963762a9ab10cd4fade21c230d.jpg" alt="Amour Bot Avatar">
+        </div>
+
         <div class="bot-title">Amour</div>
         <div class="bot-subtitle">aka 3D-Chatter's</div>
 
         <div class="bot-status-row">
-          <div class="bot-status-dot" id="botStatusDot"></div>
-          <span id="botStatusText" style="color:#ffb8c6;">Fetching status...</span>
+          <div class="bot-status-dot"></div>
+          <span id="botStatusText" style="color:#ffb8c6;">Online</span>
         </div>
 
         <div class="bot-tag">DISCORD BOT</div>
 
         <div class="bot-description" id="botDescription">
-          Интерактивный 3D‑чаттер‑бот для живых реакций и общения на сервере.
+          Интерактивный 3D‑чаттер‑бот, который отслеживает игровую информацию и передаёт её в Discord на базе нейросети.
         </div>
       </div>
     </aside>
@@ -617,7 +623,7 @@
     <div class="page-container">
       <div class="profile-card">
         <div class="avatar-wrap">
-          <img class="avatar-img" src="https://cdn-live.warthunder.com/uploads/c2/fc/1d/89c1994b2285c0fb13540b86af1d038c7d/asa.png" alt="avatar" />
+          <img class="avatar-img" src="https://i.pinimg.com/736x/19/cb/68/19cb6809726280c48c867422e32d8b22.jpg" alt="avatar" />
           <div class="avatar-glitch-layer"></div>
           <div class="avatar-scanline"></div>
         </div>
@@ -744,41 +750,6 @@
 
     fetchDiscordStatus();
     setInterval(fetchDiscordStatus, 15000);
-
-    const BOT_ID = '1478521850916245636';
-    const botStatusDot = document.getElementById('botStatusDot');
-    const botStatusText = document.getElementById('botStatusText');
-
-    async function fetchBotStatus() {
-      try {
-        const response = await fetch(`https://api.lanyard.rest/v1/users/${BOT_ID}`);
-        const result = await response.json();
-
-        if (result.success) {
-          const status = result.data.discord_status;
-
-          botStatusDot.className = 'bot-status-dot';
-          botStatusDot.classList.add(status);
-
-          const statusMap = {
-            'online': 'Online',
-            'idle': 'Idle / Away',
-            'dnd': 'Do Not Disturb',
-            'offline': 'Offline'
-          };
-          botStatusText.innerText = statusMap[status] || status;
-        } else {
-          botStatusText.innerText = "Lanyard Error";
-          botStatusDot.className = 'bot-status-dot offline';
-        }
-      } catch (err) {
-        botStatusText.innerText = "API Error";
-        botStatusDot.className = 'bot-status-dot offline';
-      }
-    }
-
-    fetchBotStatus();
-    setInterval(fetchBotStatus, 15000);
   </script>
 </body>
 </html>
