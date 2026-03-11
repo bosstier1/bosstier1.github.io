@@ -199,16 +199,21 @@
       scrollbar-color: var(--neon-red) #0a0010;
     }
 
-    .sidebar::-webkit-scrollbar { width: 5px; }
+    .sidebar::-webkit-scrollbar {
+      width: 5px;
+    }
+
     .sidebar::-webkit-scrollbar-track {
       background: #0a0010;
       border-left: 1px solid rgba(255, 30, 86, 0.2);
     }
+
     .sidebar::-webkit-scrollbar-thumb {
       background: linear-gradient(180deg, #ff003c, #ff1e56, #ff003c);
       border-radius: 0;
       box-shadow: 0 0 10px var(--neon-glitch), 0 0 20px var(--neon-red);
     }
+
     .sidebar::-webkit-scrollbar-thumb:hover {
       background: linear-gradient(180deg, #fff, var(--neon-glitch), #fff);
       box-shadow: 0 0 16px #fff, 0 0 30px var(--neon-glitch);
@@ -763,12 +768,12 @@
       col.style.animationDelay = '-' + (Math.random() * 10) + 's';
       col.style.opacity = Math.random() * 0.5 + 0.3;
       let str = "";
-      for (let j = 0; j < 80; j++) str += charset.charAt(Math.floor(Math.random() * charset.length)) + "\\n";
+      for (let j = 0; j < 80; j++) str += charset.charAt(Math.floor(Math.random() * charset.length)) + "\\\\n";
       col.innerText = str;
       matrixContainer.appendChild(col);
       setInterval(() => {
         let s = "";
-        for (let j = 0; j < 80; j++) s += charset.charAt(Math.floor(Math.random() * charset.length)) + "\\n";
+        for (let j = 0; j < 80; j++) s += charset.charAt(Math.floor(Math.random() * charset.length)) + "\\\\n";
         col.innerText = s;
       }, Math.random() * 2000 + 1000);
     }
