@@ -37,7 +37,6 @@
       justify-content: center;
     }
 
-    /* --- 1. ВИДЕО-ФОН (САМЫЙ НИЖНИЙ СЛОЙ) --- */
     .video-backdrop {
       position: fixed;
       inset: 0;
@@ -58,7 +57,6 @@
       visibility: visible;
     }
 
-    /* --- 2. ФОНОВЫЕ ЭФФЕКТЫ --- */
     .bg-layer {
       position: fixed;
       inset: 0;
@@ -80,7 +78,6 @@
     @keyframes blockTear { 0%, 90% { clip-path: inset(0 0 0 0); transform: translateX(0); } 92% { clip-path: inset(20% 0 60% 0); transform: translateX(-25px); opacity: 0.9; filter: hue-rotate(90deg); } 94% { clip-path: inset(60% 0 10% 0); transform: translateX(35px); opacity: 1; filter: invert(1); } 96% { clip-path: inset(0 0 0 0); transform: translateX(0); } }
     @keyframes matrixFall { from { transform: translateY(-30%); } to { transform: translateY(-150%); } }
 
-    /* --- 3. СТРУКТУРА СТРАНИЦЫ --- */
     .layout { position: relative; z-index: 10; pointer-events: auto; width: 100%; max-width: 1200px; display: flex; align-items: center; justify-content: center; padding: 20px; gap: 20px; height: 100vh; perspective: 1000px; }
     
     .sidebar { 
@@ -130,7 +127,6 @@
     .link-box { display: flex; align-items: center; justify-content: center; padding: 22px; background: #000; border: 1px solid var(--neon-red-soft); text-decoration: none; color: #fff; font-size: 16px; font-weight: bold; letter-spacing: 0.15em; transition: all 0.2s; cursor: pointer; }
     .link-box:hover { background: var(--neon-glitch); color: #000; box-shadow: 0 0 20px var(--neon-glitch); transform: scale(1.02); }
 
-    /* --- 4. КИБЕР-АРТЕФАКТ И ПРЕДУПРЕЖДЕНИЯ --- */
     .cyber-artifact { position: fixed; top: 40px; right: 40px; width: 70px; height: 70px; z-index: 60; display: flex; align-items: center; justify-content: center; cursor: none; }
     
     .artifact-text { position: absolute; right: 100px; font-size: 15px; font-weight: bold; letter-spacing: 0.3em; color: var(--neon-red); white-space: nowrap; opacity: 0; transform: translateX(20px); transition: all 0.4s; pointer-events: none; text-shadow: 0 0 10px var(--neon-red); }
@@ -168,7 +164,6 @@
     body.shattered .artifact-text { color: #0ff; text-shadow: 0 0 10px #0ff; }
     body.shattered .cyber-artifact:hover .artifact-core { background: #fff; box-shadow: 0 0 30px #fff; }
 
-    /* --- 5. ПРОЗРАЧНЫЙ МУЗЫКАЛЬНЫЙ ПЛЕЕР --- */
     .music-player-wrap {
       position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(60px);
       z-index: 40; width: min(400px, 90vw); opacity: 0; pointer-events: none; transition: all 0.8s ease;
@@ -200,7 +195,6 @@
     .playlist-item:hover { background: rgba(255,255,255,0.1); color: #fff; }
     .playlist-item.active { background: rgba(0, 255, 255, 0.15); color: #0ff; font-weight: bold; border: 1px solid rgba(0,255,255,0.4); box-shadow: inset 0 0 10px rgba(0,255,255,0.1); }
 
-    /* Кастомный курсор */
     .cursor-wrapper { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; mix-blend-mode: exclusion; }
     .cursor-geo { position: absolute; width: 40px; height: 40px; border: 2px solid #fff; transform: translate(-50%, -50%) rotate(45deg); transition: width 0.2s, height 0.2s, border-radius 0.2s, transform 0.1s; box-shadow: inset 0 0 10px #fff, 0 0 15px #fff; }
     .cursor-core { position: absolute; width: 6px; height: 6px; background: #ff003c; transform: translate(-50%, -50%); box-shadow: 0 0 15px 5px #ff003c; animation: coreTwitch 0.5s infinite; }
@@ -220,19 +214,16 @@
 </head>
 <body>
 
-  <!-- ВИДЕО-ФОН ЗА СТРАНИЦЕЙ -->
   <div class="video-backdrop" id="videoBackdrop">
     <video id="bgVideo" muted playsinline></video>
   </div>
 
-  <!-- ФОНОВЫЕ ЭФФЕКТЫ -->
   <div class="bg-layer">
     <div class="heavy-pixel-mask"></div>
     <div class="glitch-blocks"></div>
     <div class="matrix-rain" id="matrixRain"></div>
   </div>
 
-  <!-- ПОРТФОЛИО -->
   <div class="layout" id="mainLayout">
     <aside class="sidebar">
       <div class="sidebar-header">BOT CATEGORY</div>
@@ -276,7 +267,6 @@
       </div>
 
       <div class="portfolio-card">
-        <!-- ТУТ ИСПРАВЛЕНЫ ССЫЛКИ -->
         <div class="portfolio-links">
           <a class="tgk-box" href="https://t.me/goldensisi4" target="_blank"><span>T.ME/GOLDENSISI4</span></a>
           <a class="link-box" href="https://github.com/" target="_blank"><span>GITHUB PROFILE</span></a>
@@ -290,7 +280,6 @@
     </div>
   </div>
 
-  <!-- КИБЕР-АРТЕФАКТ И ПРЕДУПРЕЖДЕНИЯ -->
   <div class="cyber-artifact" id="sceneToggle">
     <div class="artifact-text" id="artifactText">EXECUTE_SPLIT()</div>
     <div class="rings-wrapper">
@@ -306,7 +295,6 @@
     <span class="epilepsy-note">ЕСЛИ ЭПИЛЕПТИК ЗАКРОЙ ГЛАЗА ИЛИ ПИЗДЕЦ</span>
   </div>
 
-  <!-- АУДИОПЛЕЕР (ДОБАВЛЕНО value="0.5" ДЛЯ ГРОМКОСТИ) -->
   <div class="music-player-wrap">
     <div class="music-player">
       <div class="player-controls">
@@ -333,14 +321,12 @@
     </div>
   </div>
 
-  <!-- Кастомный курсор -->
   <div class="cursor-wrapper" id="custom-cursor">
     <div class="cursor-geo" id="cursor-geo"></div>
     <div class="cursor-core"></div>
   </div>
 
   <script>
-    /* Матрица */
     const matrixContainer = document.getElementById('matrixRain');
     const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+-=[]{}|;:,.<>?/~`ｦÆｳｲｦΔΘΛΞΠΣΦΨΩαβγδεζηθικλμνξοπρστυφχψω";
     for (let i = 0; i < 40; i++) {
@@ -360,7 +346,6 @@
       }, Math.random() * 2000 + 1000);
     }
 
-    /* Курсор */
     const cursorWrapper = document.getElementById("custom-cursor");
     const cursorGeo = document.getElementById("cursor-geo");
     window.addEventListener("mousemove", (e) => {
@@ -378,12 +363,10 @@
       });
     });
 
-    /* --- ЛОГИКА ВИДЕО И АУДИО --- */
     const bgVideo = document.getElementById('bgVideo');
     const audio = document.getElementById('audio');
     
-    // Изначальная громкость 50%
-    audio.volume = 0.5;
+    audio.volume = 0.3;
     
     const playPauseBtn = document.getElementById('playPauseBtn');
     const playlistUI = document.getElementById('playlistUI');
@@ -400,7 +383,6 @@
     let currentTrack = 0;
     let isDraggingSlider = false;
 
-    // Плейлист
     tracks.forEach((track, index) => {
       const item = document.createElement('div');
       item.className = 'playlist-item';
@@ -432,7 +414,6 @@
       return m + ":" + (s < 10 ? "0" : "") + s;
     }
 
-    // Видео
     function playNextVideo() {
       bgVideo.src = videos[currentVid];
       bgVideo.play().catch(e => console.log("Видео ошибка:", e));
@@ -442,7 +423,6 @@
       playNextVideo();
     });
 
-    // Аудио
     function loadTrack(index, autoPlay = true) {
       audio.src = tracks[index];
       updatePlaylistUI();
@@ -513,7 +493,6 @@
     volumeSlider.addEventListener('input', (e) => { audio.volume = e.target.value; });
 
 
-    /* --- ЛОГИКА КНОПКИ (ПЛАВНЫЙ СДВИГ ЭКРАНА В СТОРОНЫ) --- */
     const sceneToggle = document.getElementById('sceneToggle');
     const artifactText = document.getElementById('artifactText');
     let isShattered = false;
@@ -522,7 +501,6 @@
       isShattered = !isShattered;
       
       if (isShattered) {
-        // РАЗДВИНУТЬ ЭКРАН
         document.body.classList.add('shattered');
         artifactText.innerText = "RESTORE_SYSTEM()"; 
         
@@ -531,7 +509,6 @@
         if (audio.paused) loadTrack(currentTrack, true);
 
       } else {
-        // СОБРАТЬ ЭКРАН
         document.body.classList.remove('shattered');
         artifactText.innerText = "EXECUTE_SPLIT()";
         
